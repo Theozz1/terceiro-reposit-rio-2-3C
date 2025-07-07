@@ -8,8 +8,8 @@ const letrasMinusculas = 'abcdefghijklmnopqrstuvwxyz';
 const numeros = '0123456789';
 const simbolos = '!@%*?';
 let tamanhoSenha = 12;
+let entropia = tamanhoSenha*Math.log2(alfabeto.length);
 numeroSenha.textContent = tamanhoSenha;
-
 
 botoes[0].onclick = diminuiTamanho;
 botoes[1].onclick = aumentaTamanho;
@@ -57,7 +57,9 @@ function geraSenha() {
     classificaSenha();
 }
 
-function classificaSenha() {
+function classificaSenha(tamanhoAlfabeto) {
+    let entropia = tamanhoAlfabetoSenha*Math.log2(tamanhoAlfabeto);
+    console.log(entropia);
     forcaSenha = classList.remove('fraca', 'media', 'forte');
     if (tamanhoSenha>11){
         forcaSenha.classList.add('forte');
@@ -66,4 +68,6 @@ function classificaSenha() {
     } else if(tamanhoSenha<=5){
         forcaSenha.classList.add('fraca');
     }
+    const valorEntropia = document.querySelector('.entropia');
+    valorEntropia.textContent2 = 2**Math.floor(entropia)/(100e6*60*60*24);
 }
